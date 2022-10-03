@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getx_training_app/screens/HomeScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:getx_training_app/utility/variables.dart';
 import 'package:getx_training_app/components/FlashScreenPlan.dart';
@@ -15,9 +16,9 @@ class FlashScreen extends StatelessWidget {
         height: WinSize.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/image2.png'),
-              fit: BoxFit.cover,
-            )),
+          image: AssetImage('assets/images/image2.png'),
+          fit: BoxFit.cover,
+        )),
         child: Column(
           children: [
             Row(
@@ -101,17 +102,24 @@ class FlashScreen extends StatelessWidget {
                     children: [
                       Expanded(
                           child: Text(
-                            'Skip Intro',
-                            style: GoogleFonts.poppins(
-                              color: Colors.white.withOpacity(0.5),
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )),
+                        'Skip Intro',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white.withOpacity(0.5),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )),
                       const SizedBox(width: 20),
                       Expanded(
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => HomeScreen(),
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             primary: AppColor.Color2,
                             padding: const EdgeInsets.symmetric(vertical: 15),
@@ -139,5 +147,3 @@ class FlashScreen extends StatelessWidget {
     );
   }
 }
-
-
