@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getx_training_app/screens/homescreen.dart';
+import 'package:getx_training_app/screens/FlashScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       
-      home: const HomeScreen(),
+      home: const FlashScreen(),
     );
   }
 }
