@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:getx_training_app/screens/HomeScreen.dart';
+import 'package:getx_training_app/screens/home_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:getx_training_app/utility/variables.dart';
-import 'package:getx_training_app/components/FlashScreenPlan.dart';
+import 'package:getx_training_app/components/flash_screen_plan.dart';
 
 class FlashScreen extends StatelessWidget {
   const FlashScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final Size WinSize = MediaQuery.of(context).size;
+    final Size winSize = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
-        width: WinSize.width,
-        height: WinSize.height,
+        width: winSize.width,
+        height: winSize.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/image2.png'),
@@ -116,7 +116,7 @@ class FlashScreen extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => HomeScreen(),
+                                builder: (context) => const HomeScreen(),
                               ),
                             );
                           },

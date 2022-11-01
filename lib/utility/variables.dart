@@ -11,3 +11,4 @@ class AppColor {
 }
 
 const double DefaultPadding = 20.0;
+const double DefaultMargin = 20.0;
