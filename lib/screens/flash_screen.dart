@@ -83,14 +83,17 @@ class FlashScreen extends StatelessWidget {
                       FlashScreenPlan(
                         title: 'I am Inactive',
                         text: 'I have never trained',
+                        active: true,
                       ),
                       FlashScreenPlan(
                         title: 'I am Beginner',
                         text: 'I have trained few times',
+                        active: false,
                       ),
                       FlashScreenPlan(
                         title: 'I am Expert',
                         text: 'I have been training for long',
+                        active: false,
                       ),
                     ],
                   ),

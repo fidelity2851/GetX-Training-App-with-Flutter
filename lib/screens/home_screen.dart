@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:getx_training_app/screens/flash_screen.dart';
+import 'package:getx_training_app/components/bottom_navbar.dart';
+import 'package:getx_training_app/components/category_item.dart';
+import 'package:getx_training_app/components/category_tag.dart';
 import 'package:getx_training_app/screens/workout_details.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:getx_training_app/utility/variables.dart';
@@ -42,12 +44,12 @@ class HomeScreen extends StatelessWidget {
                       height: 50,
                       padding: const EdgeInsets.all(DefaultPadding / 2),
                       decoration: BoxDecoration(
+                        shape: BoxShape.circle,
                         color: AppColor.Color2,
                         border: Border.all(
                           width: 3,
                           color: AppColor.Color2,
                         ),
-                        borderRadius: BorderRadius.circular(50),
                         image: const DecorationImage(
                           image: AssetImage('assets/images/emely.jpg'),
                           alignment: Alignment.topCenter,
@@ -68,8 +70,8 @@ class HomeScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
+                        shape: BoxShape.circle,
                         color: AppColor.Color2,
-                        borderRadius: BorderRadius.circular(40),
                       ),
                       child: const Icon(
                         Icons.play_arrow_rounded,
@@ -247,216 +249,6 @@ class HomeScreen extends StatelessWidget {
 
       // Bottom Navigation
       bottomNavigationBar: const BottomNavBar(),
-    );
-  }
-}
-
-class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: DefaultPadding * 2,
-        vertical: DefaultPadding,
-      ),
-      decoration: BoxDecoration(
-        color: AppColor.Color1,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Icon(
-            Icons.grid_view_rounded,
-            color: AppColor.Color2,
-            size: 30,
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const FlashScreen(),
-                ),
-              );
-            },
-            child: Text(
-              'Workout',
-              style: GoogleFonts.poppins(
-                color: Colors.grey,
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          Text(
-            'Level',
-            style: GoogleFonts.poppins(
-              color: Colors.grey,
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          Text(
-            'Profile',
-            style: GoogleFonts.poppins(
-              color: Colors.grey,
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class CategoryTitle extends StatelessWidget {
-  const CategoryTitle({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: GoogleFonts.poppins(
-        color: Colors.white,
-        fontSize: 25,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}
-
-class CategoryItem extends StatelessWidget {
-  const CategoryItem({
-    Key? key,
-    required this.image,
-    required this.name,
-  }) : super(key: key);
-
-  final String image;
-  final String name;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const WorkoutDetails(),
-          ),
-        );
-      },
-      child: Container(
-        margin: const EdgeInsets.only(right: DefaultMargin),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                image,
-                width: 130,
-                height: 150,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              name,
-              style: GoogleFonts.poppins(
-                color: Colors.white,
-                fontSize: 12,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CategoryTag extends StatelessWidget {
-  const CategoryTag({
-    Key? key,
-    required this.title,
-    required this.active,
-  }) : super(key: key);
-
-  final bool active;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(right: DefaultMargin),
-      padding: active
-          ? EdgeInsets.symmetric(
-              horizontal: (active ? DefaultPadding : 0),
-              vertical: DefaultPadding / 10,
-            )
-          : const EdgeInsets.all(0),
-      decoration: active
-          ? BoxDecoration(
-              border: Border.all(
-                width: 1,
-                color: AppColor.Color2,
-                style: BorderStyle.solid,
-              ),
-              borderRadius: const BorderRadius.all(Radius.circular(20)),
-            )
-          : const BoxDecoration(),
-      child: Text(
-        title,
-        style: GoogleFonts.poppins(
-          color: Colors.white,
-          fontSize: 12,
-        ),
-      ),
-    );
-  }
-}
-
-class DoubleColorTitle extends StatelessWidget {
-  const DoubleColorTitle({
-    Key? key,
-    required this.text1,
-    required this.text2,
-    required this.size,
-  }) : super(key: key);
-
-  final String text1;
-  final String text2;
-  final double size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          text1,
-          style: GoogleFonts.poppins(
-            color: AppColor.Color2,
-            fontSize: size,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        const SizedBox(width: 5),
-        Text(
-          text2,
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontSize: size,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
     );
   }
 }

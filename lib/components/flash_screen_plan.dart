@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:getx_training_app/utility/variables.dart';
 
-
 class FlashScreenPlan extends StatelessWidget {
   const FlashScreenPlan({
     Key? key,
     required this.title,
     required this.text,
+    required this.active,
   }) : super(key: key);
 
   final String title;
   final String text;
+  final bool active;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class FlashScreenPlan extends StatelessWidget {
                   ),
                   child: Icon(
                     Icons.check,
-                    color: AppColor.Color2,
+                    color: active ? AppColor.Color2 : AppColor.Color1,
                     size: 20,
                   ),
                 ),
