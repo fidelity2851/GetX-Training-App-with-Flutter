@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:getx_training_app/screens/flash_screen.dart';
+import 'package:getx_training_app/screens/workout_details.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:getx_training_app/utility/variables.dart';
 
@@ -272,12 +274,21 @@ class BottomNavBar extends StatelessWidget {
             color: AppColor.Color2,
             size: 30,
           ),
-          Text(
-            'Workout',
-            style: GoogleFonts.poppins(
-              color: Colors.grey,
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const FlashScreen(),
+                ),
+              );
+            },
+            child: Text(
+              'Workout',
+              style: GoogleFonts.poppins(
+                color: Colors.grey,
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
           Text(
@@ -335,28 +346,37 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(right: DefaultMargin),
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.asset(
-              image,
-              width: 130,
-              height: 150,
-              fit: BoxFit.cover,
-            ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const WorkoutDetails(),
           ),
-          const SizedBox(height: 5),
-          Text(
-            name,
-            style: GoogleFonts.poppins(
-              color: Colors.white,
-              fontSize: 12,
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(right: DefaultMargin),
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                image,
+                width: 130,
+                height: 150,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 5),
+            Text(
+              name,
+              style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: 12,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
